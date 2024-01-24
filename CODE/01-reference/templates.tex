@@ -1,0 +1,30 @@
+% Author: Castamere
+\documentclass{ctexart} % 使用ctex以支持中文字符
+
+\RequirePackage{natbib}          % BibTeX 库
+\usepackage[hidelinks]{hyperref} % 用于超链接
+\bibliographystyle{unsrtnat}     % 参考文献被列出的样式
+\bibpunct{[}{]}{;}{s}{,}{,} % 第一，二个参数为括号样式，可以换成小括号
+\newcommand{\fullcite}[1]{(\citeauthor{#1}, \citeyear{#1})\cite{#1}} % 自定义引用指令
+
+\pagestyle{empty} % 去掉页眉页脚等，与引用无关
+
+\begin{document}
+
+% 使用\cite{}进行文内引用
+这是使用$\backslash cite\{ref\}$命令的演示\cite{Castamere2024AddReference} 
+
+% 使用自定义命令\fullcite{}进行文内引用
+这是使用$\backslash fullcite\{ref\}$命令的演示\fullcite{Castamere2024AddReference} 
+
+% 引用多个文献演示(分开引用[1][2])
+这是使用$\backslash cite\{ref1\}\backslash cite\{ref2\}$的演示\cite{Castamere2024AddReference}\cite{Castamere2024如何添加}
+
+% 引用多个文献演示(合并引用[1;2])
+这是使用$\backslash cite\{ref1, ref2\}$的演示\cite{Castamere2024AddReference, Castamere2024如何添加}
+
+\phantomsection\addcontentsline{toc}{section}{参考文献} % 在目录中添加“参考文献”
+
+\bibliography{references/references} % 使用\bibliography{}在此处列出所有参考文献
+
+\end{document}
